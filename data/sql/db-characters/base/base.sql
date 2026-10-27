@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `attriboost_attributes` (
+CREATE TABLE IF NOT EXISTS `tortuga_tomes_attributes` (
   `guid` int unsigned NOT NULL,
   `unallocated` int DEFAULT NULL,
   `stamina` int unsigned DEFAULT NULL,

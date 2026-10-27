@@ -1,17 +1,17 @@
-#ifndef MODULE_ATTRIBOOST_H
-#define MODULE_ATTRIBOOST_H
+#ifndef MODULE_TORTUGA_TOMES_H
+#define MODULE_TORTUGA_TOMES_H
 
 #include "ScriptMgr.h"
 #include "Player.h"
 
 #include <unordered_map>
 
-enum AttriboostConstants
+enum TortugaTomesConstants
 {
-    ATTR_ITEM = 16073,
+    ATTR_ITEM = 248000,
     ATTR_SPELL = 18282,
-    ATTR_QUEST = 441153,
-    TALENT_QUEST = 441154,
+    ATTR_QUEST = 248000,
+    TALENT_QUEST = 248001,
 
     ATTR_SETTING_PROMPT = 1,
 
@@ -22,9 +22,9 @@ enum AttriboostConstants
     ATTR_GOSSIP_SETTINGS_PROMPT = 5,
     ATTR_GOSSIP_SETTINGS_RETURN = 6,
 
-    ATTR_NPC_TEXT_HAS_ATTRIBUTES = 441191,
-    ATTR_NPC_TEXT_GENERIC = 441190,
-    ATTR_NPC_TEXT_DISABLED = 441192,
+    ATTR_NPC_TEXT_HAS_ATTRIBUTES = 248001,
+    ATTR_NPC_TEXT_GENERIC = 248000,
+    ATTR_NPC_TEXT_DISABLED = 248002,
 
     ATTR_SPELL_STAMINA = 7477,
     ATTR_SPELL_AGILITY = 7471,
@@ -34,7 +34,7 @@ enum AttriboostConstants
     ATTR_SPELL_SPELL_POWER = 9392
 };
 
-struct Attriboosts
+struct TomeAttributes
 {
     uint32 Unallocated;
 
@@ -48,39 +48,39 @@ struct Attriboosts
     uint32 Settings;
 };
 
-std::unordered_map<uint64, Attriboosts> attriboostsMap;
+std::unordered_map<uint64, TomeAttributes> tomeAttributesMap;
 
 void AddAttributePoint(Player* /*player*/);
 void AddTalentPoint(Player* /*player*/);
-Attriboosts* GetAttriboosts(Player* /*player*/);
-void ClearAttriboosts();
-void LoadAttriboosts();
-Attriboosts* LoadAttriboostsForPlayer(Player* /*player*/);
-void SaveAttriboosts();
-void SaveAttriboostsForPlayer(Player* /*player*/);
-void ApplyAttributes(Player* /*player*/, Attriboosts* /*attributes*/);
+TomeAttributes* GetTomeAttributes(Player* /*player*/);
+void ClearTomeAttributes();
+void LoadTomeAttributes();
+TomeAttributes* LoadTomeAttributesForPlayer(Player* /*player*/);
+void SaveTomeAttributes();
+void SaveTomeAttributesForPlayer(Player* /*player*/);
+void ApplyAttributes(Player* /*player*/, TomeAttributes* /*attributes*/);
 void DisableAttributes(Player* /*player*/);
-bool TryAddAttribute(Attriboosts* /*attributes*/, uint32 /*attribute*/);
-void ResetAttributes(Attriboosts* /*attributes*/);
+bool TryAddAttribute(TomeAttributes* /*attributes*/, uint32 /*attribute*/);
+void ResetAttributes(TomeAttributes* /*attributes*/);
 bool HasAttributesToSpend(Player* /*player*/);
 bool HasAttributes(Player* /*player*/);
 bool IsAttributeAtMax(uint32 /*attribute*/, uint32 /*value*/);
 uint32 GetAttributesToSpend(Player* /*player*/);
 uint32 GetTotalAttributes(Player* /*player*/);
-uint32 GetTotalAttributes(Attriboosts* /*attributes*/);
+uint32 GetTotalAttributes(TomeAttributes* /*attributes*/);
 uint32 GetResetCost();
 bool HasSetting(Player* /*player*/, uint32 /*setting*/);
 void ToggleSetting(Player* /*player*/, uint32 /*setting*/);
 void SendAllocateMenu(Player* /*player*/, Creature* /*creature*/);
 void SendSettingsMenu(Player* /*player*/, Creature* /*creature*/);
 
-class AttriboostPlayerScript : public PlayerScript
+class TortugaTomesPlayerScript : public PlayerScript
 {
 public:
-    AttriboostPlayerScript() : PlayerScript("AttriboostPlayerScript") { }
+    TortugaTomesPlayerScript() : PlayerScript("TortugaTomesPlayerScript") { }
 
-    virtual void OnLogin(Player* /*player*/) override;
-    virtual void OnLogout(Player* /*player*/) override;
+    virtual void OnPlayerLogin(Player* /*player*/) override;
+    virtual void OnPlayerLogout(Player* /*player*/) override;
     virtual void OnPlayerCompleteQuest(Player* /*player*/, Quest const* /*quest*/) override;
     virtual void OnPlayerLeaveCombat(Player* /*player*/) override;
 
@@ -88,18 +88,18 @@ public:
     std::string GetAttributeName(uint32 /*attribute*/);
 };
 
-class AttriboostUnitScript : public UnitScript
+class TortugaTomesUnitScript : public UnitScript
 {
 public:
-    AttriboostUnitScript() : UnitScript("AttriboostUnitScript") { }
+    TortugaTomesUnitScript() : UnitScript("TortugaTomesUnitScript") { }
 
     void OnDamage(Unit* /*attacker*/, Unit* /*victim*/, uint32& /*damage*/);
 };
 
-class AttriboostCreatureScript : public CreatureScript
+class TortugaTomesCreatureScript : public CreatureScript
 {
 public:
-    AttriboostCreatureScript() : CreatureScript("AttriboostCreatureScript") { }
+    TortugaTomesCreatureScript() : CreatureScript("TortugaTomesCreatureScript") { }
 
     virtual bool OnGossipHello(Player* /*player*/, Creature* /*creature*/) override;
     virtual bool OnGossipSelect(Player* /*player*/, Creature* /*creature*/, uint32 /*sender*/, uint32 /*action*/) override;
@@ -107,13 +107,13 @@ public:
     void HandleAttributeAllocation(Player* /*player*/, uint32 /*attribute*/, bool /*reset*/);
 };
 
-class AttriboostWorldScript : public WorldScript
+class TortugaTomesWorldScript : public WorldScript
 {
 public:
-    AttriboostWorldScript() : WorldScript("AttriboostWorldScript") { }
+    TortugaTomesWorldScript() : WorldScript("TortugaTomesWorldScript") { }
 
     virtual void OnAfterConfigLoad(bool /*reload*/) override;
     virtual void OnShutdownInitiate(ShutdownExitCode /*code*/, ShutdownMask /*mask*/) override;
 };
 
-#endif // MODULE_ATTRIBOOST_H
+#endif // MODULE_TORTUGA_TOMES_H

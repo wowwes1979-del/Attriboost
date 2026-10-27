@@ -5,43 +5,43 @@
 [worldserver]
 
 ########################################
-# Attriboost Configuration
+# TortugaTomes Configuration
 ########################################
 #
-#    Attriboost.Enable
+#    TortugaTomes.Enable
 #        Description: Enable/Disable the librarian/bonus attributes.
 #        Default:     0 - Disabled
 #                     1 - Enabled
 #
 
-Attriboost.Enable = 0
+TortugaTomes.Enable = 0
 
 #
-#    Attriboost.ResetCost
+#    TortugaTomes.ResetCost
 #        Description: The cost of resetting attributes in copper.
 #        Default:     2500000 (250 gold)
 #
 
-Attriboost.ResetCost = 2500000
+TortugaTomes.ResetCost = 2500000
 
 #
-#    Attriboost.DisablePvP
+#    TortugaTomes.DisablePvP
 #        Description: Enable/Disable the attributes in PvP combat.
 #                     0 - Disabled
 #        Default:     1 - Enabled
 #
 
-Attriboost.DisablePvP = 1
+TortugaTomes.DisablePvP = 1
 
 #
-#    Attriboost.Max.*
+#    TortugaTomes.Max.*
 #        Description: The max value each attribute can be allocated.
 #        Default:     100
 #
 
-Attriboost.Max.Stamina = 100
-Attriboost.Max.Strength = 100
-Attriboost.Max.Agility = 100
-Attriboost.Max.Intellect = 100
-Attriboost.Max.Spirit = 100
-Attriboost.Max.SpellPower = 100
+TortugaTomes.Max.Stamina = 100
+TortugaTomes.Max.Strength = 100
+TortugaTomes.Max.Agility = 100
+TortugaTomes.Max.Intellect = 100
+TortugaTomes.Max.Spirit = 100
+TortugaTomes.Max.SpellPower = 100
